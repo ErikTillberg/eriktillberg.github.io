@@ -1,0 +1,47 @@
+
+p {
+    margin: 0;
+    margin-bottom: 2px;
+    padding: 0;
+}
+
+.Terminal {
+    width: 20em;
+    min-height: 13em;
+    display: flex;
+    flex-direction: column;
+    background-color: #362f38;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.TerminalHeader {
+    display: flex;
+    background-color: #362f38;
+    height: 25px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.BlackLine {
+    display: flex;
+    height: 2px;
+    background-color: black;
+}
+
+.HeaderText {
+    height: auto;
+    color: #635765;
+    font-size: 14px;
+}
+
+.TerminalBody {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    margin: 8px;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
