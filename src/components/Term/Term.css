@@ -6,8 +6,9 @@ p {
 }
 
 .Terminal {
-    width: 20em;
+    width: 25em;
     min-height: 13em;
+    max-height: 25em;
     display: flex;
     flex-direction: column;
     background-color: #362f38;
@@ -18,16 +19,17 @@ p {
 .TerminalHeader {
     display: flex;
     background-color: #362f38;
-    height: 25px;
+    min-width: 100%;
+    min-height: 1.25em;
     overflow: hidden;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     align-self: center;
 }
 
 .BlackLine {
     display: flex;
-    height: 2px;
+    height: 1px;
     background-color: black;
 }
 
@@ -44,4 +46,11 @@ p {
     margin: 8px;
     justify-content: flex-start;
     align-items: flex-start;
+}
+
+.ControlButtons {
+    display: flex;
+    flex-direction: row;
+    margin-left: 8px;
+    margin-right: 8px;
 }
