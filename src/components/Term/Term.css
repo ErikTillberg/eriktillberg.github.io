@@ -7,7 +7,7 @@ p {
 
 .Terminal {
     width: 32em;
-    min-height: 13em;
+    min-height: 15em;
     max-height: 25em;
     display: flex;
     flex-direction: column;
@@ -53,4 +53,8 @@ p {
     flex-direction: row;
     margin-left: 8px;
     margin-right: 8px;
+}
+
+.WindowsButton {
+    margin-left: 24px;
 }

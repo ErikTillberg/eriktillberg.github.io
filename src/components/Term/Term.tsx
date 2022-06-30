@@ -19,9 +19,58 @@ function ControlButtons() {
     )
 }
 
-function Term() {
+function AppleHeader() {
+    return (
+        <div className="TerminalHeader">
+            <ControlButtons />
+            <div className="HeaderText">
+                eriktillberg -- -bash -- 150x100
+            </div>
+            <div className="ControlButtons">
+                <CircleButton color='transparent' />
+                <CircleButton color='transparent' />
+                <CircleButton color='transparent' />
+            </div>
+        </div>
+    )
+}
+
+function WindowsHeader() {
+        return (
+            <div className="TerminalHeader" style={{backgroundColor: '#056ccd'}}>
+                <div style={{display: 'flex', flexDirection: 'row', justifyContent: 'center', alignItems: 'center'}}>
+                    <img style={{ marginLeft: '8px', width: '21px', height: '18px'}}src={'cmdicon.jpeg'}/>
+                    <div style={{marginLeft: '8px', fontSize: '14px'}}>
+                        {'Command Prompt'}
+                    </div>
+                </div>
+
+                <div className="ControlButtons">
+                   <div className="WindowsButton" style={{alignSelf: 'center', marginBottom: '2px'}}>&minus;</div>
+                   <div className="WindowsButton" style={{fontSize: '18px', alignSelf: 'center'}}>&#9633;</div>
+                   <div className="WindowsButton" style={{marginRight: '8px', fontSize: '18px', alignSelf: 'center',}}>&#x2715;</div>
+                </div>
+            </div>
+        )
+}
+
+type Props = {
+    onDesktopVersionChanged(desktopVersion: string): void
+}
+
+function Term(props: Props) {
 
     const terminal = useRef<any>(null);
+    const [desktopVersion, setDesktopVersion] = useState('apple')
+
+    const switchDesktop = (desktopVersion: string) => {
+        if (desktopVersion === 'windows') {
+            setDesktopVersion('windows')
+        } else {
+            setDesktopVersion('apple')
+        }
+        props.onDesktopVersionChanged(desktopVersion)
+    } 
 
     const commands = {
         echo: {
@@ -84,28 +133,38 @@ function Term() {
             fn: () => {
                 return asciiPortrait
             }
+        },
+        desktop: {
+            description: 'Not an Apple fan? Are you from Microsoft? This command should fix things up for you. Pass "apple" or "windows"',
+            fn: (newDesktopVersion: string) => {
+
+                if (newDesktopVersion === desktopVersion) {
+                    return 'You\'ve already set it to that one!'
+                }
+
+                if (newDesktopVersion === 'apple') {
+                    switchDesktop(newDesktopVersion)
+                    return '**Play mac startup noise** (you\'ll have to imagine it)'
+                } else if (newDesktopVersion === 'windows') {
+                    switchDesktop(newDesktopVersion)
+                    return '**Play windows XP jingle** (you\'ll have to imagine this one)'
+                } else {
+                    return 'One of two things has happened, either this OS does not exist, or I did not implement it, in which case I\'m sorry - your OS of choice is valid.'
+                }
+            }
         }
     }
 
     return (
-        <div className="Terminal">
-            <div className="TerminalHeader">
-                <ControlButtons />
-                <div className="HeaderText">
-                    eriktillberg -- -bash -- 150x100
-                </div>
-                <div className="ControlButtons">
-                    <CircleButton color='transparent' />
-                    <CircleButton color='transparent' />
-                    <CircleButton color='transparent' />
-                </div>
-            </div>
+        <div className="Terminal" style={desktopVersion === 'windows' ? {borderRadius: 0} : {}}>
+            
+            { desktopVersion === 'apple' ? <AppleHeader /> : <WindowsHeader />}
             
             <div className="BlackLine"/>
 
             <Terminal
                 ref={terminal}
-                style={{flex: 1, backgroundColor: '#1c1c1c'}}
+                style={{flex: 1, backgroundColor: desktopVersion === 'apple' ? '#1c1c1c' : 'black'}}
                 commands={commands}
                 welcomeMessage={['Last login: Wed Jun 29 10:57:37 on ttys000', 'Type "help" for options']}
                 promptLabel={'you@erik:~$'}
