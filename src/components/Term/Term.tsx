@@ -100,7 +100,7 @@ function Term() {
                 ref={terminal}
                 style={{flex: 1, backgroundColor: '#1c1c1c'}}
                 commands={commands}
-                welcomeMessage={['Last login: Wed Jun 2910:57:37 on ttys000', 'Type "help" for options']}
+                welcomeMessage={['Last login: Wed Jun 29 10:57:37 on ttys000', 'Type "help" for options']}
                 promptLabel={'you@erik:~$'}
                 dangerMode/>
         </div>
