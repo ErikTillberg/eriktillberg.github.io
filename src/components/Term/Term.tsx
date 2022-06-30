@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import './Term.css';
 import Terminal from 'react-console-emulator'
+import { asciiPortrait } from '../../values/strings';
 
 function CircleButton(props: any) {
     return (
@@ -76,6 +77,12 @@ function Term() {
             fn: () => {
                 window.open('https://github.com/ErikTillberg')
                 return ''
+            }
+        },
+        portrait: {
+            description: 'An ASCII photo of me. Some features such as a nose, eyes, and torso are nearly discernable if you squint.',
+            fn: () => {
+                return asciiPortrait
             }
         }
     }

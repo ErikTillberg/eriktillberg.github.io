@@ -6,7 +6,7 @@ p {
 }
 
 .Terminal {
-    width: 25em;
+    width: 32em;
     min-height: 13em;
     max-height: 25em;
     display: flex;
