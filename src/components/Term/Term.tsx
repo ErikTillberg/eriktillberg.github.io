@@ -135,7 +135,7 @@ function Term(props: Props) {
             }
         },
         desktop: {
-            description: 'Not an Apple fan? Are you from Microsoft? This command should fix things up for you. Pass "apple" or "windows"',
+            description: 'Not an Apple fan? Are you from Microsoft? This command should fix things up for you. Type "desktop windows" or "desktop apple".',
             fn: (newDesktopVersion: string) => {
 
                 if (newDesktopVersion === desktopVersion) {
@@ -166,8 +166,8 @@ function Term(props: Props) {
                 ref={terminal}
                 style={{flex: 1, backgroundColor: desktopVersion === 'apple' ? '#1c1c1c' : 'black'}}
                 commands={commands}
-                welcomeMessage={['Last login: Wed Jun 29 10:57:37 on ttys000', 'Type "help" for options']}
-                promptLabel={'you@erik:~$'}
+                welcomeMessage={['Last login: Wed Jun 29 10:57:37 on ttys000', 'Welcome to my website! Not sure what\'s going on? Enter "help" to get some options.']}
+                promptLabel={'you@eriktillberg:~$'}
                 dangerMode/>
         </div>
     )
